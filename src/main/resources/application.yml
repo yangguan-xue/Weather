@@ -29,6 +29,12 @@ spring:
         format_sql: true
     open-in-view: false
 
+  wechat:
+    appid: wx7e32dcfe7de20fbd
+    secret: 7f1599cc42919be9098c71dc3d2d6f29
+    url:
+      code2session: https://api.weixin.qq.com/sns/jscode2session
+
 # ????
 logging:
   level:
@@ -41,4 +47,8 @@ logging:
 
 security:
   basic:
-    enabled: false
+    enabled: false\
+
+jwt:
+    secret: biaGG8kPHIc4xphP+l0mWx4ZRL7rQQ1q9fEVRVvIewDKh1mmoT3aYTDmU2hZ7yeG
+    expiration: 7200

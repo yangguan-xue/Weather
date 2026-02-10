@@ -71,7 +71,20 @@ public class TestController {
         } catch (Exception e) {
             return ResponseWrapper.error("Repository调用失败：" + e.getMessage());
         }
-
-
     }
+        /**
+         * 测试微信登录流程
+         * GET http://localhost:8080/api/test/wechat-flow
+         */
+        @GetMapping("/wechat-flow")
+        public ResponseWrapper<Map<String, Object>> testWechatFlow() {
+            Map<String, Object> flow = new HashMap<>();
+            flow.put("步骤1", "前端调用wx.login()获取code");
+            flow.put("步骤2", "前端将code发送到 /api/auth/wechat-login");
+            flow.put("步骤3", "后端用code换取openid");
+            flow.put("步骤4", "后端根据openid创建/查找用户");
+            flow.put("步骤5", "后端生成token返回给前端");
+            flow.put("步骤6", "前端存储token，后续请求在Header中携带");
+            return ResponseWrapper.success("微信登录流程说明", flow);
+        }
 }
