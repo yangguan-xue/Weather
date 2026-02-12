@@ -16,7 +16,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # 第二阶段：运行
-FROM ccr.ccs.tencentyun.com/weixincloud/openjdk:17-jre-alpine
+FROM openjdk:17-jre-alpine
 
 # 设置时区
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
