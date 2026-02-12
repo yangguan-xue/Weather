@@ -15,7 +15,4 @@ public class WechatLoginDTO {
     private String avatarUrl;   //头像url
     private String city;    //用户城市
 
-    public String getAvatarUrl() {
-        return "";
-    }
 }

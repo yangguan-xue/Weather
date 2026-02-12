@@ -2,7 +2,12 @@ server:
   port: 8080
   servlet:
     context-path: /api
-
+  ssl:
+    enabled: true
+    key-store: src\main\resources\keystore.p12 # 证书文件路径，相对于 classpath
+    key-store-password: ygx28YGX # 生成证书时设置的密码
+    key-store-type: PKCS12 # 证书类型
+    key-alias: tomcat # 证书别名，生成时设置的那个
 spring:
   application:
     name: weatherReport
@@ -52,3 +57,24 @@ security:
 jwt:
     secret: biaGG8kPHIc4xphP+l0mWx4ZRL7rQQ1q9fEVRVvIewDKh1mmoT3aYTDmU2hZ7yeG
     expiration: 7200
+
+# application.yml
+qweather:
+  api-host: https://nq3byg9ymh.re.qweatherapi.com # 和风天气API基地址
+  host: https://nq3byg9ymh.re.qweatherapi.com
+  api-key: d1ed7e9ad803465e97b344f776b4d339
+  # 以下是JWT认证必需的新配置
+  project-id: 49KVC33D34 # 替换为控制台获取的项目ID
+  credential-id: K4WMKCG9FC # 替换为控制台获取的凭据ID
+  private-key: |
+    -----BEGIN PRIVATE KEY-----
+    MC4CAQAwBQYDK2VwBCIEIE+jEoIfQsxBirf9Ou4BAHwpIgfw0VhMWjvg+Al+vaw0
+    -----END PRIVATE KEY-----
+  public-key: |
+    -----BEGIN PUBLIC KEY-----
+    MCowBQYDK2VwAyEAhLytX+GFvcvNrizgVfNeuaugpNgHSxrV1W2F4wUbOH8=
+    -----END PUBLIC KEY-----
+# 可选：缓存配置
+weather:
+  cache:
+    expire-hours: 1

@@ -1,12 +1,10 @@
+// model/entity/WeatherCache.java
 package com.ygx.weatherreport.model.entity;
 
 import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-/**
- * 天气缓存实体类
- */
 @Data
 @Entity
 @Table(name = "weather_cache")
@@ -16,26 +14,21 @@ public class WeatherCache {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "city", nullable = false, length = 50)
-    private String city;  // 城市
+    @Column(nullable = false)
+    private String city;
 
-    @Column(name = "location_key", length = 50)
-    private String locationKey;  // 和风天气的位置key
+    @Column(name = "location_key")
+    private String locationKey;
 
     @Column(name = "weather_data", columnDefinition = "JSON")
-    private String weatherData;  // 天气数据（JSON格式）
+    private String weatherData;
 
-    @Column(name = "weather_type", length = 20)
-    private String weatherType;  // 天气类型：now/forecast
+    @Column(name = "weather_type")
+    private String weatherType = "now";
 
     @Column(name = "expire_at", nullable = false)
-    private LocalDateTime expireAt;  // 过期时间
+    private LocalDateTime expireAt;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;  // 创建时间
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
+    private LocalDateTime createdAt = LocalDateTime.now();
 }
